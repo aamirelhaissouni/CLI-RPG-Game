@@ -1,3 +1,11 @@
+/*
+Git Commands:
+- git add .
+- git commit -m 
+- git push -u origin main
+*/
+
+
 // Start of CLI game 
 // Made by Aamir Elhaissouni
 // Started 7-7-25
