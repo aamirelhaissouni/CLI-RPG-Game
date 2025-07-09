@@ -14,15 +14,18 @@ Git Commands:
 // Have a game Loop
 // Have different classes
 // Have different stats
-// Have an inbentory
+// Have an inventory
 // Have levels (health, mana, strength etc)
 
 #include <stdio.h>
 #include <stdlib.h>
-
-
+#include <stdbool.h>
+#include "player.h"
 
 int main(){
     //Inital Message/Test
-    printf("Welcome to my CLI_RPG, I hope you have fun!");
+    printf("Welcome to my CLI_RPG, I hope you have fun!\n");
+    //Create the player the user will be using
+    Player character;
+    player_init(&character);
 }

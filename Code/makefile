@@ -1,7 +1,7 @@
 CC = gcc
 FLAGS = 
-test: main.c
-	$(CC) main.c -o test
+test: main.c player.c
+	$(CC) main.c player.c -o test
 
 clean: 
 	rm -r test.exe
