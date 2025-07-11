@@ -20,12 +20,18 @@ Git Commands:
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
+#include <ctype.h>
 #include "player.h"
 
 int main(){
     //Inital Message/Test
     printf("Welcome to my CLI_RPG, I hope you have fun!\n");
+
     //Create the player the user will be using
     Player character;
     player_init(&character);
+
+    //testing player display
+    player_display(&character);
 }

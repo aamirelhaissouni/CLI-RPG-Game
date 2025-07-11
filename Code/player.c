@@ -1,21 +1,92 @@
 #include "player.h"
+#include "weapon.h"
+#include "locations.h"
 #include <stdio.h>
 #include <conio.h>
+#include <string.h>
+#include <ctype.h>
 
 // Set up player function
-voidplayer_init(Player* player){
-    char n[12];
+void player_init(Player* player){
+    //Choosing name
+    char n[MAX];
     printf("Please enter your characters name (max 12 characters): \n");
-    scanf("%s", &n);
-    int c;
-    printf("Enter your desired class, press K for Knight, N for Necromancer\n ");
-    c = getch();
-    putch(c);
+    //scanf that reads up to 11 characters with null terminator
+    scanf("%11s", n);
+    //use strcpy to appply string to player name becasue you can't directly 
+    //assign an array to an array in C
+    strcpy(player->name, n);
+
+    //Choosing class
+    char c;
+    while (c != 'k' && c != 'n' && c != 'K' && c != 'N'){
+        printf("Enter your desired class, press K for Knight, N for Necromancer. ");
+        c = tolower(getche());
+        printf("\n");
+    };
+    /*testing while loop
+    printf("%c", c); */
+    player->class = c;
+
+    //Setting player hp based on class:
+    if(player->class == 'k'){
+        player->hp = 100;
+    }else{
+        player->hp = 75;
+    }
+
+    //Setting player power based on class
+    if(player->class == 'k'){
+        player->power = UP;
+    }else{
+        player->power = LOW;
+    }
+
+    //Setting player magic/magic power based on class
+    if (player->class == 'n'){
+        player->magic = UP;
+    }else{
+        player->magic = LOW;
+    }
+
+    //Setting player level
+    player->level = 1;
+
+    //Setting player armor based on class
+    if (player->class == 'k'){
+        player->armor = KARMOR;
+    }else{
+        player->armor = NARMOR;
+    };
+
+    //Setting player inventory
+    strcpy(player->inventory[0], BOOK);
+    for(int i = 1; i<6; i++){
+        strcpy(player->inventory[i], "Empty");
+    };
+
+    //Setting up player location:
+    strcpy(player->location, BASE);
+
+    printf("Character creation complete! Welcome to my CLI RPG %s\n", player->name);
+
+    //End of player_init all further modifications through general gameplay
 };
 
 //Display player stats/inventory:
-/*
 void player_display(Player* player){
+//Printing player stauses and current inventory
+printf("+---------+--------------------+\n");
+printf("| Player: | Inventory:         |\n");
+printf("+---------+--------------------+\n");
+printf("| Level: %d     | * %s          \n", player->level, player->inventory[0]);
+printf("| Class: %c     | * %s          \n", player->class, player->inventory[1]);
+printf("| Health: %d   | * %s          \n", player->hp, player->inventory[2]);
+printf("| Power: %.2lf  | * %s       \n", player->power, player->inventory[3]);
+printf("| Magic: %.2lf  | * %s       \n", player->magic, player->inventory[4]);
+printf("| Armor: %.2lf  | * %s       \n", player->armor, player->inventory[5]);
+printf("+------------+--------------+\n");
 
+//End of player_display function
 }; 
-*/
+
