@@ -1,5 +1,5 @@
 #include "player.h"
-#include "weapon.h"
+//#include "enemies.h"
 #include "locations.h"
 #include <stdio.h>
 #include <conio.h>
@@ -8,6 +8,8 @@
 
 // Set up player function
 void player_init(Player* player){
+    //Set playert status 0, for no battle, 1 for battle
+    player->status = 0;
     //Choosing name
     char n[MAX];
     printf("Please enter your characters name (max 12 characters): \n");
@@ -66,7 +68,7 @@ void player_init(Player* player){
     };
 
     //Setting up player location:
-    strcpy(player->location, BASE);
+    /////////////////////////////////
 
     printf("Character creation complete! Welcome to my CLI RPG %s\n", player->name);
 
@@ -77,7 +79,7 @@ void player_init(Player* player){
 void player_display(Player* player){
 //Printing player stauses and current inventory
 printf("+---------+--------------------+\n");
-printf("| Player: | Inventory:         |\n");
+printf("| Player: %s | Inventory:         |\n", player->name);
 printf("+---------+--------------------+\n");
 printf("| Level: %d     | * %s          \n", player->level, player->inventory[0]);
 printf("| Class: %c     | * %s          \n", player->class, player->inventory[1]);

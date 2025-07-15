@@ -5,6 +5,8 @@
 #define LOW 1
 #define UP 1.5
 #define BOOK "Guide Book"
+#define KARMOR 0.75
+#define NARMOR 1.0
 
 
 
@@ -18,8 +20,7 @@ struct Player{
     int level;
     float armor;
     char inventory[6][15];
-    char location[30];
-    //struct Weapon weapon;
+    int status;
 };
 
 
