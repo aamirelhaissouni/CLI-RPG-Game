@@ -1,5 +1,6 @@
 //Player struct, Holds: Name, HP, Power, Magic Power, Armor, 
 // Inventory, and Location 
+#include "locations.h"
 
 #define MAX 12
 #define LOW 1
@@ -21,6 +22,8 @@ struct Player{
     float armor;
     char inventory[6][15];
     int status;
+    struct Location;
+    struct Passage;
 };
 
 

@@ -1,14 +1,26 @@
 //File to store locations and movement functions
 
-#define BASE "Home Base"
 
-typedef struct {
-    //location name
-    char name[20];
-    // enemy type (0 for goblins, 1 for ghouls)
-    int enemyType;
-    // forgiveness value, the higher the less likely a boss will spawn as you traverse
-    int forgiveness;
+
+//Location struct
+typedef struct Location{
+    char name[50];
+    char description[250];
+    int completed;
+    int battle;
+    Location *forward;
+    Location *backward;
 } Location;
 
-void location_init(Location* location, char name, int enemyType, int forgiveness);
+typedef struct {
+    char name[20];
+    char description[50];
+    Location forward;
+    Location back;
+}Passage;
+
+//location initializer
+void location_init(Location* location, const char* name, const char* description, int battle, Location* loc1, Location* loc2);
+
+//passage initializer
+void passage_init(Passage* Passage, const char* name, const char* description, Location* Loc1, Location* Loc2);

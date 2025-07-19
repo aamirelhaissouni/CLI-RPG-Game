@@ -13,4 +13,8 @@ typedef struct{
     int* damage;
 } Enemy;
 
+void gen_enemy(){};
+
+void degen_enemy(){};
+
 

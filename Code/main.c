@@ -25,6 +25,7 @@ Git Commands:
 #include <conio.h>
 #include "player.h"
 #include "enemies.h"
+#include "locations.h"
 
 #define ESCAPE_KEY 27
 #define TAB_KEY 9
@@ -57,19 +58,20 @@ int main(){
 
     printf(" \n");
 
-    printf("You open the top drawer of the dresser and within there lies a note: ''Further down this path the dragon awaits you in the cave, and into the forest the goblin king does the same''\n");
-    printf("''The choice of whom you face first is yours, but you are the only warrior capable of defeating them.''\n");
+    printf("You open the top drawer of the dresser and within there lies a note: ''Further down this path the dragon awaits you in the cave, and into the forest pas the cave enterance the goblin king does the same inside his castle.''\n");
+    printf("Next to the note there is a potion, it's familiar scent tells you it heals you. You place it in your pocket.\n");
+    printf("''The choice of whom you face first is yours, you are the only warrior capable of defeating them.''\n");
 
-    //Variable to hold the current enemy the player is battling
-    
 
     //Variable to check what key the user is pressing
     char key_pressed;
-    //Varaible to hold
+    //Varaible to hold user exit
     int game_running = true;
+
+
     //Integrating Game Loop
     while(game_running){
-        prtinf("What would you like to do? ")
+        prtinf("What would you like to do? ");
 
 
         //check for user exit and inventory check
