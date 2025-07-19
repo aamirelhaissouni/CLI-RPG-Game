@@ -1,5 +1,5 @@
 #include "player.h"
-//#include "enemies.h"
+#include "enemies.h"
 #include "locations.h"
 #include <stdio.h>
 #include <conio.h>
@@ -66,9 +66,6 @@ void player_init(Player* player){
     for(int i = 1; i<6; i++){
         strcpy(player->inventory[i], "Empty");
     };
-
-    //Setting up player location:
-    /////////////////////////////////
 
     printf("Character creation complete! Welcome to my CLI RPG %s\n", player->name);
 

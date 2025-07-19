@@ -22,8 +22,7 @@ struct Player{
     float armor;
     char inventory[6][15];
     int status;
-    struct Location;
-    struct Passage;
+    Location *loc;
 };
 
 

@@ -38,6 +38,9 @@ int main(){
     Player character;
     player_init(&character);
 
+    //set player location to lodge
+    //character->loc = lodge 
+
     //testing player display
     player_display(&character);
 
@@ -67,12 +70,15 @@ int main(){
     char key_pressed;
     //Varaible to hold user exit
     int game_running = true;
-
+    //Varaible to hold instruction from player
+    char whatToDo[20];
 
     //Integrating Game Loop
     while(game_running){
-        prtinf("What would you like to do? ");
-
+        prtinf("What would you like to do? \n");
+        scanf("%s", &whatToDo);
+        //Check what user wants to do based on input
+        //if();
 
         //check for user exit and inventory check
         if (kbhit()) {  // Checks if a key has been pressed
