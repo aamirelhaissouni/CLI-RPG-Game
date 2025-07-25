@@ -18,7 +18,7 @@ struct Location{
 
 
 //location initializer
-void location_init(Location* location, const char* name, const char* description, int battle);
+void location_init(Location* location, const char* name, const char* description, int battle, int completion);
 
 //link locations function only bidirectional, have to do north and south at once, and east and west at once
 void link_loc(Location* a, Location* b, char dir);

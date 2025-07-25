@@ -66,7 +66,7 @@ void player_init(Player* player){
     for(int i = 1; i<6; i++){
         strcpy(player->inventory[i], "Empty");
     };
-
+    printf(" \n");
     printf("Character creation complete! Welcome %s!\n", player->name);
 
     //End of player_init all further modifications through general gameplay

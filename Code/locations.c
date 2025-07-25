@@ -12,11 +12,12 @@
 
 
 //basic location initialization without linking other locations
-void location_init(Location* location, const char* name, const char* description, int battle){
+void location_init(Location* location, const char* name, const char* description, int battle, int completion){
     location->name = name;
     location->description = description;
     location->completed = 0;
     location->battle = battle;
+    location->completed = completion;
 };
 
 //used to link location structs and create a map using 4 direction parameters n,s,e,w
@@ -38,6 +39,7 @@ void move_player(Player* player, char dir){
                 if(player->loc->north){
                     player->loc = player->loc->north;
                 }else{
+                    printf(" \n");
                     printf("You can't go north\n");
                 }
                 break;
@@ -45,6 +47,7 @@ void move_player(Player* player, char dir){
                 if(player->loc->south){
                     player->loc = player->loc->south;
                 }else{
+                    printf(" \n");
                     printf("You can't go south\n");
                 }
                 break;
@@ -52,6 +55,7 @@ void move_player(Player* player, char dir){
                 if(player->loc->west){
                     player->loc = player->loc->west;
                 }else{
+                    printf(" \n");
                     printf("You can't go west\n");
                 }
                 break;
@@ -59,14 +63,18 @@ void move_player(Player* player, char dir){
                 if(player->loc->east){
                     player->loc = player->loc->east;
                 }else{
+                    printf(" \n");
                     printf("You can't go east\n");
                 }
                 break;
             default:
+                printf(" \n");
                 printf("Unknown direction\n");
         }
     }else{
+        printf(" \n");
         printf("You haven't completed this area yet, you may not leave. \n");
+        printf(" \n");
     }
 };
 
