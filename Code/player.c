@@ -8,7 +8,7 @@
 
 // Set up player function
 void player_init(Player* player){
-    //Set playert status 0, for no battle, 1 for battle
+    //Set player status 0, for no battle, 1 for battle
     player->status = 0;
     //Choosing name
     char n[MAX];

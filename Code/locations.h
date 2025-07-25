@@ -1,5 +1,9 @@
 //File to store locations and movement functions
+#ifndef LOCATIONS_H
+#define LOCATIONS_H
+      
 
+typedef struct Player Player;
 
 //Location struct
 typedef struct Location{
@@ -7,7 +11,7 @@ typedef struct Location{
     const char *description;
     int completed;
     int battle;
-    Location *north, *south, *east, *west;
+    struct Location *north, *south, *east, *west;
 } Location;
 
 
@@ -18,4 +22,6 @@ void location_init(Location* location, const char* name, const char* description
 void link_loc(Location* a, Location* b, char dir);
 
 //function to allow player ot move to different locations
-void move(Player* player, char dir);
+void move_player(Player* player, char dir);
+
+#endif // LOCATIONS_H

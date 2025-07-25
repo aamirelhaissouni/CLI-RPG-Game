@@ -1,6 +1,10 @@
 //Player struct, Holds: Name, HP, Power, Magic Power, Armor, 
 // Inventory, and Location 
-#include "locations.h"
+#ifndef PLAYER_H
+#define PLAYER_H
+
+//forward declare location struct
+typedef struct Location Location;
 
 #define MAX 12
 #define LOW 1
@@ -31,3 +35,5 @@ void player_init(Player* player);
 
 //Display player stats/inventory:
 void player_display(Player* player);
+
+#endif // PLAYER_H

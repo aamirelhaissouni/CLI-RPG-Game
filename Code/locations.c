@@ -13,8 +13,8 @@
 
 //basic location initialization without linking other locations
 void location_init(Location* location, const char* name, const char* description, int battle){
-    strcpy(location->name, name);
-    strcpy(location->description, description);
+    location->name = name;
+    location->description = description;
     location->completed = 0;
     location->battle = battle;
 };
@@ -30,36 +30,43 @@ void link_loc(Location *a, Location *b, char dir){
 };
 
 //function to change players location based on their input
-void move(Player* player, char dir){
+void move_player(Player* player, char dir){
     //first check if the player is allowed to leave the area based on player loc int value
     if(player->loc->completed == 1){
         switch(dir){
             case 'n': 
-            if(player->loc->north){
-                player->loc = player->loc->north;
-            }else{
-                printf("You can't go north\n");
-            };
+                if(player->loc->north){
+                    player->loc = player->loc->north;
+                }else{
+                    printf("You can't go north\n");
+                }
+                break;
             case 's':
-            if(player->loc->south){
-                player->loc = player->loc->south;
-            }else{
-                printf("You can't go south\n");
-            }
+                if(player->loc->south){
+                    player->loc = player->loc->south;
+                }else{
+                    printf("You can't go south\n");
+                }
+                break;
             case 'w':
-            if(player->loc->west){
-                player->loc = player->loc->west;
-            }else{
-                printf("You can't go west\n");
-            }
+                if(player->loc->west){
+                    player->loc = player->loc->west;
+                }else{
+                    printf("You can't go west\n");
+                }
+                break;
             case 'e':
-            if(player->loc->east){
-                player->loc = player->loc->east;
-            }else{
-                printf("You can't go east\n");
-            }
+                if(player->loc->east){
+                    player->loc = player->loc->east;
+                }else{
+                    printf("You can't go east\n");
+                }
+                break;
+            default:
+                printf("Unknown direction\n");
         }
     }else{
         printf("You haven't completed this area yet, you may not leave. \n");
     }
 };
+

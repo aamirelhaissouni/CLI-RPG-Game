@@ -39,7 +39,7 @@ int main(){
     player_init(&character);
 
     //testing player display
-    player_display(&character);
+    //player_display(&character);
 
     // Game start print
     printf("You awaken beneath the soft rustle of leaves, the scent of wildflowers and morning dew in the air. Sunlight filters gently through a canopy of trees above you.\n");
@@ -131,9 +131,9 @@ int main(){
 
     //END OF MAP INITIALIZATION
 
-    /////////////////////////////////
+    ///////////////////////////////////////////////////
 
-    //START OF GAME LOOP
+    
 
     //Variable to check what key the user is pressing
     char key_pressed;
@@ -143,12 +143,64 @@ int main(){
     char whatToDo[20];
 
 
+    //////////////// ENEMIES/BATTLING AREA
+
+    //array of enemy structs to hold spawned enemies
+    Enemy* enemies[10];
+
+    /////////////// END OF ENEMIES/BATTLING AREA
+
+    //////////////////////////////////////////////////
+
+    ///////////////START OF GAME LOOP
+
     //Integrating Game Loop
     while(game_running){
-        prtinf("What would you like to do? \n");
+        printf("What would you like to do? \n");
+        printf("Type Options: 'Go', 'Flee', 'Describe' | Press Tab to open your inventory | Press esc to exit the game ");
         scanf("%s", &whatToDo);
         //Check what user wants to do based on input
-        //if();
+        //If user wants to move:
+        if(strcmp(whatToDo, "go") == 0 || strcmp(whatToDo, "Go") || strcmp(whatToDo, "GO")){
+            char go;
+            printf("Where would you like to go? (Valid inputs: n, s, e, w, x (to stay))\n");
+            //print a map of the players current location
+            if(character.loc->north){
+                printf("%s\n", character.loc->north->name);
+            }else{
+                printf("X\n");
+            }
+            printf("|\n");
+            printf("|\n");
+            if(character.loc->west){
+                printf("%s", character.loc->west->name);
+            }else{
+                printf("X");
+            }
+            printf("----");
+            printf("%s", character.loc->name);
+            printf("-----");
+            if(character.loc->east){
+                printf("%s", character.loc->east->name);
+            }else{
+                printf("X");
+            }
+            printf("|\n");
+            printf("|\n");
+            if(character.loc->south){
+                printf("%s\n", character.loc->south->name);
+            }else{
+                printf("X\n");
+            }
+
+            //gather user input and try to move
+            scanf(" %c", &go);
+            if(go == 'x'){
+                break;
+            }else{
+                move_player(&character, go);
+            }
+        }
 
         //check for user exit and inventory check
         if (kbhit()) {  // Checks if a key has been pressed
