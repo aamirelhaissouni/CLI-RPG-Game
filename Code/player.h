@@ -3,8 +3,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-//forward declare location struct
-typedef struct Location Location;
 
 #define MAX 12
 #define LOW 1
@@ -13,6 +11,8 @@ typedef struct Location Location;
 #define KARMOR 0.75
 #define NARMOR 1.0
 
+//forward declarion of location struct
+typedef struct Location Location;
 
 
 typedef struct Player Player;
@@ -36,4 +36,4 @@ void player_init(Player* player);
 //Display player stats/inventory:
 void player_display(Player* player);
 
-#endif // PLAYER_H
+#endif 

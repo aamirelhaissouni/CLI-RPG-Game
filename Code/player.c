@@ -24,7 +24,7 @@ void player_init(Player* player){
     while (c != 'k' && c != 'n' && c != 'K' && c != 'N'){
         printf("Enter your desired class, press K for Knight, N for Necromancer. ");
         c = tolower(getche());
-        printf("\n");
+        printf(" \n");
     };
     /*testing while loop
     printf("%c", c); */
@@ -67,7 +67,7 @@ void player_init(Player* player){
         strcpy(player->inventory[i], "Empty");
     };
 
-    printf("Character creation complete! Welcome to my CLI RPG %s\n", player->name);
+    printf("Character creation complete! Welcome %s!\n", player->name);
 
     //End of player_init all further modifications through general gameplay
 };

@@ -2,17 +2,19 @@
 #ifndef LOCATIONS_H
 #define LOCATIONS_H
       
-
+//forward declaration of player struct
 typedef struct Player Player;
 
+
 //Location struct
-typedef struct Location{
+typedef struct Location Location;
+struct Location{
     const char *name;
     const char *description;
     int completed;
     int battle;
     struct Location *north, *south, *east, *west;
-} Location;
+};
 
 
 //location initializer
@@ -24,4 +26,4 @@ void link_loc(Location* a, Location* b, char dir);
 //function to allow player ot move to different locations
 void move_player(Player* player, char dir);
 
-#endif // LOCATIONS_H
+#endif 

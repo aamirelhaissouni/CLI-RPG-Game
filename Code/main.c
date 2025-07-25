@@ -24,7 +24,7 @@ Git Commands:
 #include <ctype.h>
 #include <conio.h>
 #include "player.h"
-#include "enemies.h"
+//#include "enemies.h"
 #include "locations.h"
 
 #define ESCAPE_KEY 27
@@ -33,6 +33,7 @@ Git Commands:
 int main(){
     //Inital Message/Test
     printf("Welcome to my CLI_RPG, I hope you have fun! Press esc whenevr you'd like to exit, press tab to access your iventory.\n");
+    printf(" \n");
 
     //Create the player the user will be using
     Player character;
@@ -42,16 +43,20 @@ int main(){
     //player_display(&character);
 
     // Game start print
+    printf(" \n");
     printf("You awaken beneath the soft rustle of leaves, the scent of wildflowers and morning dew in the air. Sunlight filters gently through a canopy of trees above you.\n");
     printf("Your clothes are worn, your hands are calloused… but your mind is a haze. No name comes to you. No past. Only the sound of birdsong and the distant whisper of a stream.\n");
     printf("Wherever you are, your story begins now.");
 
     if(character.class == 'k'){
+        printf(" \n");
         printf("You look down and see tattered chainmail covering you from your toes to your chest, a battered helmet and long sword lie next to you, you pick them up.\n");
     }else{
+        printf("\n");
         printf("You look down and you see you are wearing a long robe, a mystical wand lies next to you, as you reach for it floats and lands in your hand, fitting perfectly.\n");
     }
 
+    printf(" \n");
     printf(" \n");
 
     printf("You notice a familiar feeling lodge down a dirtpath to your right, you head over and enter it, all that is there is a bed and dresser with one window.\n");
@@ -120,14 +125,17 @@ int main(){
     link_loc(secondFloor, giantDoor, 'n');
     link_loc(giantDoor, goblinBoss, 'n');
     link_loc(goblinBoss, castleT, 'n');
-    link_loc(castleT, lodge, 'w');
+    //gotta wait until player defeats the boss here to link this: link_loc(castleT, lodge, 'w');
         //cave
     link_loc(caveE, stalacmite, 'n');
     link_loc(stalacmite, ravine, 'w');
     link_loc(ravine, passage, 'n');
     link_loc(passage, dragonLair, 'n');
     link_loc(dragonLair, caveT, 'n');
-    link_loc(caveT, lodge, 'e');
+    //gotta wait until player defeats the boss here to link this: link_loc(caveT, lodge, 'e');
+
+    //put player default location to the lodge
+    character.loc = lodge;
 
     //END OF MAP INITIALIZATION
 
@@ -146,7 +154,7 @@ int main(){
     //////////////// ENEMIES/BATTLING AREA
 
     //array of enemy structs to hold spawned enemies
-    Enemy* enemies[10];
+    //Enemy* enemies[10];
 
     /////////////// END OF ENEMIES/BATTLING AREA
 
@@ -157,8 +165,9 @@ int main(){
     //Integrating Game Loop
     while(game_running){
         printf("What would you like to do? \n");
-        printf("Type Options: 'Go', 'Flee', 'Describe' | Press Tab to open your inventory | Press esc to exit the game ");
+        printf("Type Options: 'Go', 'Flee', 'Describe' | Press Tab to open your inventory | Press esc to exit the game \n");
         scanf("%s", &whatToDo);
+
         //Check what user wants to do based on input
         //If user wants to move:
         if(strcmp(whatToDo, "go") == 0 || strcmp(whatToDo, "Go") || strcmp(whatToDo, "GO")){
@@ -166,12 +175,12 @@ int main(){
             printf("Where would you like to go? (Valid inputs: n, s, e, w, x (to stay))\n");
             //print a map of the players current location
             if(character.loc->north){
-                printf("%s\n", character.loc->north->name);
+                printf("    %s\n", character.loc->north->name);
             }else{
-                printf("X\n");
+                printf("    X\n");
             }
-            printf("|\n");
-            printf("|\n");
+            printf("    |\n");
+            printf("    |\n");
             if(character.loc->west){
                 printf("%s", character.loc->west->name);
             }else{
@@ -185,38 +194,39 @@ int main(){
             }else{
                 printf("X");
             }
-            printf("|\n");
-            printf("|\n");
+            printf("    |\n");
+            printf("    |\n");
             if(character.loc->south){
-                printf("%s\n", character.loc->south->name);
+                printf("    %s\n", character.loc->south->name);
             }else{
-                printf("X\n");
+                printf("    X\n");
             }
 
             //gather user input and try to move
             scanf(" %c", &go);
             if(go == 'x'){
-                break;
+                continue;
             }else{
                 move_player(&character, go);
             }
-        }
+        }//else if(){}
 
         //check for user exit and inventory check
-        if (kbhit()) {  // Checks if a key has been pressed
-            key_pressed = getch();  // Reads the pressed key without waiting for Enter
+        if (kbhit()) {  //Checks if a key has been pressed
+            key_pressed = getch();  //Reads the pressed key without waiting for Enter
 
-            if (key_pressed == ESCAPE_KEY) { // Check if the pressed key is Escape
-                game_running = false; // Set the flag to exit the loop
+            if (key_pressed == ESCAPE_KEY) { //Check if the pressed key is Escape
+                game_running = false; //Set the flag to exit the loop
+            }
         }
-    }
 
-            if (kbhit()) {  // Checks if a key has been pressed
-            key_pressed = getch();  // Reads the pressed key without waiting for Enter
+        if (kbhit()) {  //Checks if a key has been pressed
+            key_pressed = getch();  //Reads the pressed key without waiting for Enter
 
-            if (key_pressed == TAB_KEY) { // Check if the pressed key is Tab
-                player_display(&character); //Display inventory if tab is pressed
+            if (key_pressed == TAB_KEY) { //Check if the pressed key is Tab
+                    player_display(&character); //Display inventory if tab is pressed
+            }
         }
-    }
+
 }
-};
+}
