@@ -6,16 +6,17 @@
 #include "locations.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <conio.h>
 #include <string.h>
 #include <ctype.h>
 
 
+
 //basic location initialization without linking other locations
-void location_init(Location* location, const char* name, const char* description, int battle, int completion){
+void location_init(Location* location, const char* name, const char* description, bool battle, bool completion){
     location->name = name;
     location->description = description;
-    location->completed = 0;
     location->battle = battle;
     location->completed = completion;
 };

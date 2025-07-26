@@ -82,48 +82,56 @@ int main(void){
 
     //MAP INITIALIZATION USING MALLOC REMEMBER TO FREE MALLOC SPACE AT END OF CODE
     
+    //map initialization constants
+    const bool battle = true;
+    const bool complete = true;
+
     //memory allocation first then location initializations
+
         //base locations
     Location* lodge = malloc(sizeof(Location));
-    location_init(lodge, "Lodge\n", "Your humble home, where you may rest to regain HP.\n", 0, 1);
+    location_init(lodge, "Lodge\n", "Your humble home, where you may rest to regain HP.\n", !battle, complete);
     Location* cPath = malloc(sizeof(Location));
-    location_init(cPath, "Cobbled Path\n", "A long winding cobbled path, up the path west is the dragon cave, east is the goblin's castle.\n", 0, 1);
+    location_init(cPath, "Cobbled Path\n", "A long winding cobbled path, up the path west is the dragon cave, east is the goblin's castle.\n", !battle, complete);
     Location* castleE = malloc(sizeof(Location));
-    location_init(castleE, "Goblin Castle Enterance\n", "A gigantic wooden door stands at the enterance of the castle, towering above you. ''I thought goblins were small'' you think to yourself. \n", 0, 1);
+    location_init(castleE, "Goblin Castle Enterance\n", "A gigantic wooden door stands at the enterance of the castle, towering above you. ''I thought goblins were small'' you think to yourself. \n", !battle, complete);
     Location* caveE = malloc(sizeof(Location));
-    location_init(caveE, "Cave enterance\n", "The dark cave enterance is an abyss of inky black, you shiver at its sight.\n", 0, 1);
+    location_init(caveE, "Cave enterance\n", "The dark cave enterance is an abyss of inky black, you shiver at its sight.\n", !battle, complete);
+
         //inside of goblin castle
     Location* longHall = malloc(sizeof(Location));
-    location_init(longHall, "Long hallway past the castle enternace.\n", "In the dim light of the hallway you see menacing figures start towards you, ready for battle.\n", 1, 0);
+    location_init(longHall, "Long hallway past the castle enternace.\n", "In the dim light of the hallway you see menacing figures start towards you, ready for battle.\n", battle, !complete);
     Location* barrelRoom = malloc(sizeof(Location));
-    location_init(barrelRoom, "Small room packed with winery barrels.\n", "Two goblins perched atop the mound of barrels leap at you, a shiny key hanging from one of their belts.\n", 1, 0);
+    location_init(barrelRoom, "Small room packed with winery barrels.\n", "Two goblins perched atop the mound of barrels leap at you, a shiny key hanging from one of their belts.\n", battle, !complete);
     Location* stairway = malloc(sizeof(Location));
-    location_init(stairway, "Winding Castle Stairway.\n", "You traverse through this long stairway, leading you to the castle's second floor.\n", 0, 1);
+    location_init(stairway, "Winding Castle Stairway.\n", "You traverse through this long stairway, leading you to the castle's second floor.\n", !battle, complete);
     Location* secondFloor = malloc(sizeof(Location));
-    location_init(secondFloor, "Castle Second Floor.\n", "In the second floor hallway now you see to your left a glass door with cobwebs surrounding it, and to your right you hear the clanging of metal of a forge through an iron bar door. Far ahead you see a massive metal doorway with two keyholes on either side.\n", 0, 1);
+    location_init(secondFloor, "Castle Second Floor.\n", "In the second floor hallway now you see to your left a glass door with cobwebs surrounding it, and to your right you hear the clanging of metal of a forge through an iron bar door. Far ahead you see a massive metal doorway with two keyholes on either side.\n", !battle, complete);
     Location* cobwebRoom = malloc(sizeof(Location));
-    location_init(cobwebRoom, "A massive room covered in cobwebs and spiders. \n", "You sense movement all around through the thick webs, an attack is coming.\n", 1, 0);
+    location_init(cobwebRoom, "A massive room covered in cobwebs and spiders. \n", "You sense movement all around through the thick webs, an attack is coming.\n", battle, !complete);
     Location* forge = malloc(sizeof(Location));
-    location_init(forge, "Goblin forge.\n", "The goblins working away on their anvils all stop and stare as you enter, they growl in deep disapproval.\n", 1, 0);
+    location_init(forge, "Goblin forge.\n", "The goblins working away on their anvils all stop and stare as you enter, they growl in deep disapproval.\n", battle, !complete);
     Location* giantDoor = malloc(sizeof(Location));
-    location_init(giantDoor, "The Goblin King's massive door.\n", "The two keyholes glow dimly waiting to be united with their matching keys.\n", 0, 0); 
+    location_init(giantDoor, "The Goblin King's massive door.\n", "The two keyholes glow dimly waiting to be united with their matching keys.\n", !battle, !complete); 
     Location* goblinBoss = malloc(sizeof(Location));
-    location_init(goblinBoss, "The Goblin King's Throne Room\n", "He stands there towering above you, a menacing snarl exits his mouth as he grabs his giant sword, leaping towards you.\n", 1, 0);
+    location_init(goblinBoss, "The Goblin King's Throne Room\n", "He stands there towering above you, a menacing snarl exits his mouth as he grabs his giant sword, leaping towards you.\n", battle, !complete);
     Location* castleT = malloc(sizeof(Location));
-    location_init(castleT, "The Goblin's tresure room.\n", "A great assortment of gold and jewels lie before you, but a mystical piece of silver armor calls towards you, you take it.\n", 0, 1);
+    location_init(castleT, "The Goblin's tresure room.\n", "A great assortment of gold and jewels lie before you, but a mystical piece of silver armor calls towards you, you take it.\n", !battle, !complete);
+
         //inside of dragon cave
     Location* stalacmite = malloc(sizeof(Location));
-    location_init(stalacmite, "Stalacmite cave.\n", "A small but tall cave with massive stalacmites hanging from the ceiling, small dragons hang from them staring at you, ready to pounce. Some of them guard the body of a dead soldier, his skeletal hand gripping onto a long a rope.\n", 1, 0);
+    location_init(stalacmite, "Stalacmite cave.\n", "A small but tall cave with massive stalacmites hanging from the ceiling, small dragons hang from them staring at you, ready to pounce. Some of them guard the body of a dead soldier, his skeletal hand gripping onto a long a rope.\n", battle, !complete);
     Location* ravine = malloc(sizeof(Location));
-    location_init(ravine, "Massive glowing ravine.\n", "Lava flows in multiple parts of this ravine, and fiery dragons drink from the lava, glaring and growling at you between licks.\n", 1, 0); 
+    location_init(ravine, "Massive glowing ravine.\n", "Lava flows in multiple parts of this ravine, and fiery dragons drink from the lava, glaring and growling at you between licks.\n", battle, !complete); 
     Location* passage = malloc(sizeof(Location));
-    location_init(passage, "A small passage.\n", "A small crack in the walls of the ravine leads you through this passage, greta heat emits from the light at the end.\n", 0, 1);
+    location_init(passage, "A small passage.\n", "A small crack in the walls of the ravine leads you through this passage, great heat emits from the light at the end.\n", !battle, complete);
     Location* dragonLair = malloc(sizeof(Location));
-    location_init(dragonLair, "The Dragon's Lair.\n", "The massive dragon lies ontop of a pile of gold and jewels, snarling a massive blast of flame exits his mouth as he flies towards you.\n", 1, 0);
+    location_init(dragonLair, "The Dragon's Lair.\n", "The massive dragon lies ontop of a pile of gold and jewels, snarling a massive blast of flame exits his mouth as he flies towards you.\n", battle, !complete);
     Location* caveT = malloc(sizeof(Location));
-    location_init(caveT, "Huge treasure pile.\n", "With the dragon defeated you step into the massive pile of treasure.\n", 0, 1);
+    location_init(caveT, "Huge treasure pile.\n", "With the dragon defeated you step into the massive pile of treasure.\n", !battle, complete);
 
     //linking locations
+
         //castle
     link_loc(lodge, cPath, 'n');
     link_loc(cPath, castleE, 'e');
@@ -153,7 +161,6 @@ int main(void){
 
     ///////////////////////////////////////////////////
 
-    
 
     //Variable to check what key the user is pressing
     char key_pressed;
@@ -176,7 +183,7 @@ int main(void){
 
     //Integrating Game Loop
     while(game_running){
-        sleep(2);
+        sleep(1);
         printf(" \n");
         printf("What would you like to do? \n");
         printf(" \n");
@@ -248,7 +255,6 @@ int main(void){
             printf(" \n");
             printf("Name: %s\n", character.loc->name);
             printf(" \n");
-            sleep(2);
             printf("Description: %s\n", character.loc->description);
             printf(" \n");
         }else if(strcmp(whatToDo, "Exit") == 0 || strcmp(whatToDo, "exit") == 0 || strcmp(whatToDo, "EXIT") == 0 ){ //check if user wants to exit
