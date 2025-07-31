@@ -2,7 +2,6 @@
 #include "enemies.h"
 #include "locations.h"
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -21,11 +20,11 @@ void player_init(Player* player){
 
     //Choosing class
     char c;
-    while (c != 'k' && c != 'n' && c != 'K' && c != 'N'){
+    do {
         printf("Enter your desired class, press K for Knight, N for Necromancer. ");
-        c = tolower(getche());
+        scanf(" %c", &c);  // Space before %c skips whitespace/newlines
         printf(" \n");
-    };
+    } while (c != 'k' && c != 'n' && c != 'K' && c != 'N');
     /*testing while loop
     printf("%c", c); */
     player->class = c;

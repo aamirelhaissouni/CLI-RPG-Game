@@ -22,7 +22,6 @@ Git Commands:
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-#include <conio.h>
 #include <unistd.h>
 #include "player.h"
 //#include "enemies.h"
