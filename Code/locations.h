@@ -30,7 +30,7 @@ void move_player(Player *player, char dir);
 typedef struct {
   int num_locations;
   Location *locations[20];
-  Location *player_start;
+  Location *player_start; // don't know if I need this yet
 } World;
 
 World *world_init(void);

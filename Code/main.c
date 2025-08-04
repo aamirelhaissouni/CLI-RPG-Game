@@ -264,8 +264,9 @@ int main(void) {
     printf(" \n");
     printf("Type Options: 'Go', 'Flee', 'Location', 'Exit', 'Inventory' \n");
 
-    // check for user exit and inventory check (try to implement this later but
-    // will def use it for battling)
+    // check for user exit and inventory check
+    // try to implement this later but will def use it for battling
+    // still have to figure out non-conio.h way to implement
     /*
     if (kbhit()) {  //Checks if a key has been pressed
         key_pressed = getch();  //Reads the pressed key without waiting for
