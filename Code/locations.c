@@ -205,35 +205,85 @@ World *world_init(void) {
   world->num_locations++;
   // End of Castle
   // Start of Cave
-  Location *stalacmite = malloc(sizeof(Location));
-  location_init(stalacmite, "Stalacmite cave.\n",
+  world->locations[world->num_locations] = malloc(sizeof(Location));
+  location_init(world->locations[world->num_locations], "Stalacmite cave.\n",
                 "A small but tall cave with massive stalacmites hanging from "
                 "the ceiling, small dragons hang from them staring at you, "
                 "ready to pounce. Some of them guard the body of a dead "
                 "soldier, his skeletal hand gripping onto a long a rope.\n",
                 battle, !complete);
-  Location *ravine = malloc(sizeof(Location));
+  world->num_locations++;
+  //
+  world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(
-      ravine, "Massive glowing ravine.\n",
+      world->locations[world->num_locations], "Massive glowing ravine.\n",
       "Lava flows in multiple parts of this ravine, and fiery dragons drink "
       "from the lava, glaring and growling at you between licks.\n",
       battle, !complete);
-  Location *passage = malloc(sizeof(Location));
-  location_init(passage, "A small passage.\n",
+  world->num_locations++;
+  //
+  world->locations[world->num_locations] = malloc(sizeof(Location));
+  location_init(world->locations[world->num_locations], "A small passage.\n",
                 "A small crack in the walls of the ravine leads you through "
                 "this passage, great heat emits from the light at the end.\n",
                 !battle, complete);
-  Location *dragonLair = malloc(sizeof(Location));
+  world->num_locations++;
+  //
+  world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(
-      dragonLair, "The Dragon's Lair.\n",
+      world->locations[world->num_locations], "The Dragon's Lair.\n",
       "The massive dragon lies ontop of a pile of gold and jewels, snarling a "
       "massive blast of flame exits his mouth as he flies towards you.\n",
       battle, !complete);
-  Location *caveT = malloc(sizeof(Location));
+  world->num_locations++;
+  //
+  world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(
-      caveT, "Huge treasure pile.\n",
+      world->locations[world->num_locations], "Huge treasure pile.\n",
       "With the dragon defeated you step into the massive pile of treasure.\n",
       !battle, complete);
+  world->num_locations++;
+
+  // linking locations in the world
+  // main four
+  link_loc(world->locations[LOC_LODGE], world->locations[LOC_COBBLEDP], 'n');
+  link_loc(world->locations[LOC_COBBLEDP],
+           world->locations[LOC_CASTLE_ENTERANCE], 'e');
+  link_loc(world->locations[LOC_COBBLEDP], world->locations[LOC_CAVE_ENTERANCE],
+           'w');
+  // Castle
+  link_loc(world->locations[LOC_CASTLE_ENTERANCE],
+           world->locations[LOC_LONG_HALL], 'n');
+  link_loc(world->locations[LOC_LONG_HALL], world->locations[LOC_STAIRWAY],
+           'e');
+  link_loc(world->locations[LOC_LONG_HALL], world->locations[LOC_BARREL_ROOM],
+           'w');
+  link_loc(world->locations[LOC_STAIRWAY], world->locations[LOC_SECOND_FLOOR],
+           'n');
+  link_loc(world->locations[LOC_SECOND_FLOOR], world->locations[LOC_FORGE],
+           'e');
+  link_loc(world->locations[LOC_SECOND_FLOOR],
+           world->locations[LOC_COBWEB_ROOM], 'w');
+  link_loc(world->locations[LOC_SECOND_FLOOR], world->locations[LOC_GIANT_DOOR],
+           'n');
+  link_loc(world->locations[LOC_GIANT_DOOR], world->locations[LOC_GOBLIN_BOSS],
+           'n');
+  link_loc(world->locations[LOC_GOBLIN_BOSS],
+           world->locations[LOC_GOBLIN_TREASURE], 'n');
+  // gotta wait until player defeats the boss here to link this:
+  // link_loc(castleT, lodge, 'w'); cave
+  link_loc(world->locations[LOC_CAVE_ENTERANCE],
+           world->locations[LOC_STALACMITE], 'n');
+  link_loc(world->locations[LOC_STALACMITE], world->locations[LOC_RAVINE], 'w');
+  link_loc(world->locations[LOC_RAVINE], world->locations[LOC_PASSAGE], 'n');
+  link_loc(world->locations[LOC_PASSAGE], world->locations[LOC_DRAGON_LAIR],
+           'n');
+  link_loc(world->locations[LOC_DRAGON_LAIR],
+           world->locations[LOC_CAVE_TREASURE], 'n');
+  // gotta wait until player defeats the boss here to link this:
+  // link_loc(caveT,lodge, 'e');
+
+  // End of world init function
 
   return world;
 };

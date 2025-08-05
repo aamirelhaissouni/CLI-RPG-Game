@@ -57,8 +57,8 @@ void end_world(World *world);
 // inside cave
 #define LOC_STALACMITE 14
 #define LOC_RAVINE 15
-#define PASSAGE 16
-#define DRAGON_LAIR 17
-#define CAVE_TREASURE 18
+#define LOC_PASSAGE 16
+#define LOC_DRAGON_LAIR 17
+#define LOC_CAVE_TREASURE 18
 
 #endif
