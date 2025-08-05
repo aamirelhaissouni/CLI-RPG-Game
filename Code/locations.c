@@ -188,12 +188,15 @@ World *world_init(void) {
                 !battle, !complete);
   world->num_locations++;
   //
+  world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(world->locations[world->num_locations],
                 "The Goblin King's Throne Room\n",
                 "He stands there towering above you, a menacing snarl exits "
                 "his mouth as he grabs his giant sword, leaping towards you.\n",
                 battle, !complete);
   world->num_locations++;
+  //
+  world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(
       world->locations[world->num_locations], "The Goblin's tresure room.\n",
       "A great assortment of gold and jewels lie before you, but a mystical "
@@ -202,5 +205,35 @@ World *world_init(void) {
   world->num_locations++;
   // End of Castle
   // Start of Cave
+  Location *stalacmite = malloc(sizeof(Location));
+  location_init(stalacmite, "Stalacmite cave.\n",
+                "A small but tall cave with massive stalacmites hanging from "
+                "the ceiling, small dragons hang from them staring at you, "
+                "ready to pounce. Some of them guard the body of a dead "
+                "soldier, his skeletal hand gripping onto a long a rope.\n",
+                battle, !complete);
+  Location *ravine = malloc(sizeof(Location));
+  location_init(
+      ravine, "Massive glowing ravine.\n",
+      "Lava flows in multiple parts of this ravine, and fiery dragons drink "
+      "from the lava, glaring and growling at you between licks.\n",
+      battle, !complete);
+  Location *passage = malloc(sizeof(Location));
+  location_init(passage, "A small passage.\n",
+                "A small crack in the walls of the ravine leads you through "
+                "this passage, great heat emits from the light at the end.\n",
+                !battle, complete);
+  Location *dragonLair = malloc(sizeof(Location));
+  location_init(
+      dragonLair, "The Dragon's Lair.\n",
+      "The massive dragon lies ontop of a pile of gold and jewels, snarling a "
+      "massive blast of flame exits his mouth as he flies towards you.\n",
+      battle, !complete);
+  Location *caveT = malloc(sizeof(Location));
+  location_init(
+      caveT, "Huge treasure pile.\n",
+      "With the dragon defeated you step into the massive pile of treasure.\n",
+      !battle, complete);
+
   return world;
 };
