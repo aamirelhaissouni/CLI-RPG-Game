@@ -14,24 +14,29 @@ struct Location {
   bool completed;
   bool battle;
   struct Location *north, *south, *east, *west;
+  int location_num;
 };
+
+// World struct
+typedef struct {
+  int num_locations;
+  Location *locations[25];
+  Location *player_start; // don't know if I need this yet
+} World;
+
 
 // location initializer
 void location_init(Location *location, const char *name,
-                   const char *description, bool battle, bool completion);
+                   const char *description, bool battle, bool completion,
+                   int num);
 
 // link locations function only bidirectional, have to do north and south at
 // once, and east and west at once
 void link_loc(Location *a, Location *b, char dir);
 
 // function to allow player ot move to different locations
-void move_player(Player *player, char dir);
+void move_player(World *world, Player *player, char dir);
 
-typedef struct {
-  int num_locations;
-  Location *locations[20];
-  Location *player_start; // don't know if I need this yet
-} World;
 
 World *world_init(void);
 
