@@ -15,7 +15,7 @@ struct Enemy {
   int *damage;
 };
 
-void gen_enemy(const char *name, int hp, int damage, int numE);
+void gen_enemy(const char *name, int hp, int damage, int numE, Enemy *enemies[]);
 
 void degen_enemies(Enemy *enemies[]);
 

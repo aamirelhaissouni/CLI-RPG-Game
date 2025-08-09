@@ -9,6 +9,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <conio.h>
-#include <string.h>
-#include <ctype.h>
+
+//generate enemies and add them to current enemies array (I have no clue how the fuck I'm gonna do this)
+void gen_enemy(const char *name, int hp, int damage, int numE, Enemy *enemies[]){
+    
+}
+
+void degen_enemies(Enemy *enemies[]){
+    //i should kill myself
+}
+
+void battle(Enemy *enemies[]){
+    //im so gay
+}
+
+
+
+
