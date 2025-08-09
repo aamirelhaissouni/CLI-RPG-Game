@@ -43,27 +43,27 @@ World *world_init(void);
 void end_world(World *world);
 
 // main 4
-#define LOC_LODGE 1
-#define LOC_COBBLEDP 2
-#define LOC_CASTLE_ENTERANCE 3
-#define LOC_CAVE_ENTERANCE 4
+#define LOC_LODGE 0
+#define LOC_COBBLEDP 1
+#define LOC_CASTLE_ENTERANCE 2
+#define LOC_CAVE_ENTERANCE 3
 
 // inside castle
-#define LOC_LONG_HALL 5
-#define LOC_BARREL_ROOM 6
-#define LOC_STAIRWAY 7
-#define LOC_SECOND_FLOOR 8
-#define LOC_COBWEB_ROOM 9
-#define LOC_FORGE 10 // need to fix from here on out all the numbers
-#define LOC_GIANT_DOOR 11
-#define LOC_GOBLIN_BOSS 12
-#define LOC_GOBLIN_TREASURE 13
+#define LOC_LONG_HALL 4
+#define LOC_BARREL_ROOM 5
+#define LOC_STAIRWAY 6
+#define LOC_SECOND_FLOOR 7
+#define LOC_COBWEB_ROOM 8
+#define LOC_FORGE 9 // need to fix from here on out all the numbers
+#define LOC_GIANT_DOOR 10
+#define LOC_GOBLIN_BOSS 11
+#define LOC_GOBLIN_TREASURE 12
 
 // inside cave
-#define LOC_STALACMITE 14
-#define LOC_RAVINE 15
-#define LOC_PASSAGE 16
-#define LOC_DRAGON_LAIR 17
-#define LOC_CAVE_TREASURE 18
+#define LOC_STALACMITE 13
+#define LOC_RAVINE 14
+#define LOC_PASSAGE 15
+#define LOC_DRAGON_LAIR 16
+#define LOC_CAVE_TREASURE 17
 
 #endif

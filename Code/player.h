@@ -10,6 +10,8 @@
 #define BOOK "Guide Book"
 #define KARMOR 0.75
 #define NARMOR 1.0
+#define KHEALTH 100
+#define NHEALTH 75
 
 //forward declarion of location struct
 typedef struct Location Location;

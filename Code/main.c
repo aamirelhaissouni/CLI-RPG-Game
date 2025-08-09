@@ -42,6 +42,9 @@ int main(void) {
   // Create the player the user will be using
   Player character;
   player_init(&character);
+  
+  // set character starting location to the lodge
+  character.loc = world->locations[LOC_LODGE];
 
   // testing player display
   // player_display(&character);
@@ -51,13 +54,13 @@ int main(void) {
   printf("You awaken beneath the soft rustle of leaves, the scent of "
          "wildflowers and morning dew in the air. Sunlight filters gently "
          "through a canopy of trees above you.\n");
-  sleep(timey);
+  //sleep(timey);
   printf("Your clothes are worn, your hands are calloused but your mind is a "
          "haze. No name comes to you. No past. Only the sound of birdsong and "
          "the distant whisper of a stream.\n");
-  sleep(timey);
+  //sleep(timey);
   printf("Wherever you are, your story begins now.");
-  sleep(timey);
+  //sleep(timey);
   printf(" \n");
 
   if (character.class == 'k') {
@@ -81,21 +84,21 @@ int main(void) {
 
   printf(" \n");
 
-  sleep(timey);
+  //sleep(timey);
 
   printf("You open the top drawer of the dresser and within there lies a note: "
          "''Further down this lodge follwing a cobbled path and west, the "
          "dragon awaits you in the cave. Eastwards down the path lies the "
          "Goblin and his castle.''\n");
-  sleep(timey);
+  //sleep(timey);
   printf("Next to the note there is a potion, it's familiar scent tells you it "
          "heals you. You place it in your pocket.\n");
 
-  sleep(timey);
+  //sleep(timey);
   // NEED TO ADD POTION TO PLAYERS INVENTORY
   printf("''The choice of whom you face first is yours, you are the only "
          "warrior capable of defeating them.''\n");
-  sleep(timey);
+  //sleep(timey);
   
   // Variable to check what key the user is pressing
   char key_pressed;
@@ -117,7 +120,7 @@ int main(void) {
 
   // Integrating Game Loop
   while (game_running) {
-    sleep(1);
+    //sleep(1);
     printf(" \n");
     printf("What would you like to do? \n");
     printf(" \n");
@@ -185,22 +188,18 @@ int main(void) {
 
       // gather user input and try to move
       scanf(" %c", &go);
-      if (go == 'x') {
+    if (go == 'x') {
         continue;
-      } else {
+    } else {
         move_player(world, &character, go);
-      }
+    }
     } else if (strcmp(whatToDo, "Inventory") == 0 ||
                strcmp(whatToDo, "inventory") == 0 ||
-               strcmp(whatToDo, "INVENTORY") ==
-                   0) { // check if user wants to see their inventory then print
-                        // it out
+               strcmp(whatToDo, "INVENTORY") == 0) { // check if user wants to see their inventory then print it out
       player_display(&character);
     } else if (strcmp(whatToDo, "Location") == 0 ||
-               strcmp(whatToDo, "Location") == 0 ||
-               strcmp(whatToDo, "Location") ==
-                   0) { // check if user wants to see their location then print
-                        // it out
+               strcmp(whatToDo, "location") == 0 ||
+               strcmp(whatToDo, "LOCATION") == 0) { // check if user wants to see their location then print it out
       printf(" \n");
       printf("Name: %s\n", character.loc->name);
       printf(" \n");
@@ -214,7 +213,21 @@ int main(void) {
       if (!game_running) {
         break;
       }
-    }
+    } else if (strcmp(whatToDo, "Flee") == 0 || 
+               strcmp(whatToDo, "flee") == 0 ||
+               strcmp(whatToDo, "FLEE") ){
+            if(character.loc->battle == 0){
+                // heal the character if they're not max health
+                if(character.class == 'k' && character.hp < KHEALTH){
+                    character.hp = KHEALTH;
+                } else if (character.class == 'n' && character.hp < NHEALTH){
+                    character.hp = NHEALTH;
+                }
+                character.loc = world->locations[LOC_LODGE]; //if the player wnats to flee and their not in battle take them back to the lodge
+                printf("\n");
+                printf("You flee to your humble lodge, and rest in your bed recovering yourself. \n");
+            }
+        }
   }
 
   return 0;

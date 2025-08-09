@@ -100,7 +100,7 @@ World *world_init(void) {
   World *world = malloc(sizeof(World));
   
   //testing 1
-  printf("Beginning world init\n");
+  printf("Beginning world initialization\n");
 
 
   // set lcoation count to 0 (most important for end_world for loop)
@@ -134,6 +134,7 @@ World *world_init(void) {
                 "The dark cave enterance is an abyss of inky black, you shiver "
                 "at its sight.\n",
                 !battle, complete, LOC_CAVE_ENTERANCE);
+  world->num_locations++;
   // End of Main Four
   // Start of Castle
   world->locations[world->num_locations] = malloc(sizeof(Location));
@@ -250,8 +251,6 @@ World *world_init(void) {
       !battle, complete, LOC_CAVE_TREASURE);
   world->num_locations++;
 
-  //testing 2
-  printf("World memory allocation complete!\n");
 
   // linking locations in the world
   // main four
@@ -260,8 +259,6 @@ World *world_init(void) {
            world->locations[LOC_CASTLE_ENTERANCE], 'e');
   link_loc(world->locations[LOC_COBBLEDP], world->locations[LOC_CAVE_ENTERANCE],
            'w');
-  //testing
-  printf("Main 4 linked\n");
   // Castle
   link_loc(world->locations[LOC_CASTLE_ENTERANCE],
            world->locations[LOC_LONG_HALL], 'n');
@@ -281,17 +278,20 @@ World *world_init(void) {
            'n');
   link_loc(world->locations[LOC_GOBLIN_BOSS],
            world->locations[LOC_GOBLIN_TREASURE], 'n');
-  //testing
-  printf("Castle linked\n");
   // gotta wait until player defeats the boss here to link this:
   // link_loc(castleT, lodge, 'w');
 
   // cave linking
   link_loc(world->locations[LOC_CAVE_ENTERANCE], world->locations[LOC_STALACMITE], 'n');
+  printf("CAVE->SATALCMITE North");
   link_loc(world->locations[LOC_STALACMITE], world->locations[LOC_RAVINE], 'w');
+  printf("STALACMITE->RAVINE West");
   link_loc(world->locations[LOC_RAVINE], world->locations[LOC_PASSAGE], 'n');
+  printf("ravine->passage north");
   link_loc(world->locations[LOC_PASSAGE], world->locations[LOC_DRAGON_LAIR],'n');
+  printf("passage->dragonlair north");
   link_loc(world->locations[LOC_DRAGON_LAIR], world->locations[LOC_CAVE_TREASURE], 'n');
+
   // gotta wait until player defeats the boss here to link this:
   // link_loc(caveT,lodge, 'e');
 
