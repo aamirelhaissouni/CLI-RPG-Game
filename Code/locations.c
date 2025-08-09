@@ -298,4 +298,26 @@ World *world_init(void) {
   // End of world init function
   printf("World initialized successfully! \n");
   return world;
-};
+}
+
+
+void end_world(World *world){
+    if (!world) return;
+    for(int i = 0; i<world->num_locations; i++){
+        free(world->locations[i]);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

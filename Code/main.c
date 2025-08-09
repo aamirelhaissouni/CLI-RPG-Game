@@ -229,6 +229,7 @@ int main(void) {
             }
         }
   }
-
+  //deallocate and free world memory in the heap
+  end_world(world); 
   return 0;
 }
