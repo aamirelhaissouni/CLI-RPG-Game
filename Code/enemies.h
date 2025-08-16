@@ -15,10 +15,22 @@ struct Enemy {
   int *damage;
 };
 
-void gen_enemy(const char *name, int hp, int damage, int numE, Enemy *enemies[]);
+//enemy initializer 
+Enemy *enemy_init(const char *name[12], int hp, int damage); 
 
+//TODO: Need to add enemy generator that calls enemy initializer and adds the enemies to enemy array 
+void enemy_gen(int num_enemies, const char enemy_type);
+
+//removes and frees memory of enemies in enemy array
 void degen_enemies(Enemy *enemies[]);
 
+//starts battle with current enemies in the enemy array
 void battle(Enemy *enemies[]);
+
+#define GOBLIN 'g'
+#define DRAGON 'd'
+#define GOBLIN_BOSS 'x'
+#define DRAGON_BOSS 'y'
+
 
 #endif

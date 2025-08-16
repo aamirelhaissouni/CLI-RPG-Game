@@ -107,7 +107,7 @@ World *world_init(void) {
   world->num_locations = 0;
 
   // begin world initialization
-  //
+
   world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(world->locations[world->num_locations], "Lodge",
                 "Your humble home where you may rest to regain HP.\n", !battle,

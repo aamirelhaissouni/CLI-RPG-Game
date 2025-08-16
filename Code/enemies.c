@@ -10,10 +10,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-//generate enemies and add them to current enemies array (I have no clue how the fuck I'm gonna do this)
-void gen_enemy(const char *name, int hp, int damage, int numE, Enemy *enemies[]){
+
+Enemy *enemy_init(const char *name[12], int hp, int damage){
+    Enemy *enemy = malloc(sizeof(Enemy));
+    if (enemy == NULL){
+        printf("Enemy malloc failed. \n");
+    }
+
+    //assign values ot enemy here
+}
+
+void enemy_gen(int num_enemies, const char enemy_type){
     
 }
+
 
 void degen_enemies(Enemy *enemies[]){
     //i should kill myself
