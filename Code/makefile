@@ -4,4 +4,4 @@ test: main.c player.c
 	$(CC) main.c player.c locations.c -o test
 
 clean: 
-	rm -r test.exe
+	rm -f -r test.exe

@@ -31,9 +31,9 @@ void player_init(Player* player){
 
     //Setting player hp based on class:
     if(player->class == 'k'){
-        player->hp = 100;
+        player->hp = KHEALTH;
     }else{
-        player->hp = 75;
+        player->hp = NHEALTH;
     }
 
     //Setting player power based on class
