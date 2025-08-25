@@ -14,7 +14,7 @@ void player_init(Player* player){
     printf("Please enter your characters name (max 12 characters): \n");
     //scanf that reads up to 11 characters with null terminator
     scanf("%11s", n);
-    //use strcpy to appply string to player name becasue you can't directly 
+    //use strcpy to appply string to player name because you can't directly 
     //assign an array to an array in C
     strcpy(player->name, n);
 
