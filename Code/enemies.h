@@ -16,7 +16,7 @@ struct Enemy {
 };
 
 //enemy initializer 
-Enemy *enemy_init(const char *name[12], int hp, int damage); 
+Enemy *enemy_init(const char *name, int hp, int damage); 
 
 //TODO: Need to add enemy generator that calls enemy initializer and adds the enemies to enemy array 
 void enemy_gen(int num_enemies, const char enemy_type);
