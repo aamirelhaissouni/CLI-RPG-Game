@@ -17,7 +17,7 @@ Enemy *enemy_init(const char *name, int hp, int damage){
         printf("Enemy malloc failed. \n");
     }
 
-    //assign values ot enemy here
+    //assign values to enemy here
     enemy->damage = damage;
     enemy->hp = hp;
     enemy->name = name;
