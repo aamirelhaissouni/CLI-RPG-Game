@@ -10,16 +10,15 @@
 typedef struct Enemy Enemy;
 
 struct Enemy {
-  char *name[12];
-  int *hp;
-  int *damage;
+  const char name[12];
+  int hp;
+  int damage;
 };
 
 //enemy initializer 
-Enemy *enemy_init(const char *name, int hp, int damage); 
+Enemy *enemy_init(const char name[12], int hp, int damage); 
 
-//TODO: Need to add enemy generator that calls enemy initializer and adds the enemies to enemy array 
-void enemy_gen(int num_enemies, const char enemy_type);
+void enemy_gen(int num_enemies, const char enemy_type, Enemy *enemies[]);
 
 //removes and frees memory of enemies in enemy array
 void degen_enemies(Enemy *enemies[]);

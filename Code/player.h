@@ -12,6 +12,8 @@
 #define NARMOR 1.0
 #define KHEALTH 100
 #define NHEALTH 75
+#define STATUS_NORMAL 0
+#define STATUS_BATTLE 3
 
 //forward declarion of location struct
 typedef struct Location Location;

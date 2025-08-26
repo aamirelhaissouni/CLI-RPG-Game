@@ -98,16 +98,16 @@ World *world_init(void) {
 
   // malloc world struct that will hold everthing
   World *world = malloc(sizeof(World));
+  if(world == NULL){
+        printf("World malloc failed.");
+    }
   
   //testing 1
   printf("Beginning world initialization\n");
 
-
-  // set lcoation count to 0 (most important for end_world for loop)
   world->num_locations = 0;
 
   // begin world initialization
-
   world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(world->locations[world->num_locations], "Lodge",
                 "Your humble home where you may rest to regain HP.\n", !battle,
@@ -136,6 +136,7 @@ World *world_init(void) {
                 !battle, complete, LOC_CAVE_ENTERANCE);
   world->num_locations++;
   // End of Main Four
+
   // Start of Castle
   world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(world->locations[world->num_locations],
@@ -211,6 +212,7 @@ World *world_init(void) {
       !battle, !complete, LOC_GOBLIN_TREASURE);
   world->num_locations++;
   // End of Castle
+
   // Start of Cave
   world->locations[world->num_locations] = malloc(sizeof(Location));
   location_init(world->locations[world->num_locations], "Stalacmite cave.\n",
