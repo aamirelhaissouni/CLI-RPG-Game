@@ -18,10 +18,6 @@ Enemy *enemy_init(const char name[12], int hp, int damage){
         printf("Enemy malloc failed. \n");
     }
 
-<<<<<<< HEAD
-=======
-    //assign values to enemy here
->>>>>>> origin/main
     enemy->damage = damage;
     enemy->hp = hp;
     strcpy(enemy->name, name);

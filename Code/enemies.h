@@ -7,6 +7,14 @@
 #ifndef ENEMIES_H
 #define ENEMIES_H
 
+#define GOBLIN 'g'
+#define DRAGON 'd'
+#define GOBLIN_BOSS 'x'
+#define DRAGON_BOSS 'y'
+
+#pragma once
+
+
 typedef struct Enemy Enemy;
 
 struct Enemy {
@@ -25,11 +33,5 @@ void degen_enemies(Enemy *enemies[]);
 
 //starts battle with current enemies in the enemy array
 void battle(Enemy *enemies[]);
-
-#define GOBLIN 'g'
-#define DRAGON 'd'
-#define GOBLIN_BOSS 'x'
-#define DRAGON_BOSS 'y'
-
 
 #endif
